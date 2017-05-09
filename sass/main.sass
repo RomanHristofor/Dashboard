@@ -1,0 +1,466 @@
+@import "bourbon"
+@import "fonts"
+@import "libs"
+@import "vars"
+@import "icon"
+@import "burger"
+@import "mixins"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+html, body
+	height: 100%
+
+body
+	font-family: $default-font
+	font-size: 15px
+	line-height: 1.75
+	// line-height: 1
+	min-width: 320px
+	overflow-x: hidden
+	position: relative
+	background: linear-gradient(to bottom, #59cff0, #55e2d6)
+
+// Dashboard-header
+//========================
+
+.dashboard-header
+	width: 1670px
+	margin: 0 auto
+	// display: grid
+	// grid-template-columns: .5fr 3fr .5fr
+	display: flex
+	flex-direction: row
+	justify-content: space-between
+	align-items: flex-start
+	.left-bar,
+	.header-container,
+	.right-bar
+		height: 110px
+.left-bar
+	background-color: #21324e
+	width: 250px
+	.main-logo
+		img
+			margin: 45px auto
+			text-align: center
+			text-decoration: none
+			display: block
+.right-bar
+	width: 200px
+	display: flex
+	flex-direction: row
+	justify-content: space-around
+	align-items: center
+	background-color: #f7faff
+	border-left: 1px solid #e4eaf4
+	.nickname
+		color: $base
+		text-transform: uppercase
+
+.header-container
+	width: calc(100% - 450px)
+	.main-bar
+		height: 100%
+		display: flex
+		flex-direction: row
+		justify-content: space-around
+		align-items: center
+		background-color: #f7faff
+		.burger-btn
+			@include burger(25px, 4px, 5px, #e3e9f4)
+			display: inline-block !important
+			cursor: pointer
+			text-decoration: none
+		.activity
+			color: $base
+			font-size: 20px
+			font-weight: bold
+			margin-left: 30px
+			vertical-align: bottom
+		.active
+			@include burger-to-cross
+		button
+			@include bbb-flat-style(#3dcb35, #fff)
+			margin-left: 650px
+			border-radius: 25px
+			font-size: 14px
+			padding: 7px 40px
+			text-align: center
+		.message,
+		.reminder
+			float: right
+			margin-right: 20px
+			text-decoration: none
+			color: rgba(134, 151, 182, 0.87)
+		.message i
+			font-size: 18px
+			line-height: 1.7
+		.stats-reminder i
+			font-style: normal
+			font-size: 23px
+			display: inline-block
+		.path1
+			float: left
+			color: rgb(254, 42, 104)
+
+
+// Dashboard-statistics
+//========================
+
+.dashboard-statistics
+	width: 1670px
+	margin: 0 auto
+	display: flex
+	flex-direction: row
+	justify-content: space-between
+	align-items: stretch
+
+.left-menu
+	background-color: $dropdown
+	padding: 0
+	position: relative
+	width: 250px
+	.dashboard-menu
+		list-style: none
+		padding: 0
+		li
+			height: 35px
+			cursor: pointer
+			display: block
+			margin-bottom: 10px
+			padding: 10px 0 10px 30px
+			text-align: left
+			&:before
+				@include transition(color .5s ease-in-out)
+			&:hover a,
+			&:hover span:before,
+			&:hover:before
+				color: #55e4d4
+				@include transition(color .5s ease-in-out)
+			span:before
+				@include transition(color .5s ease-in-out)
+		a
+			@include transition(color .5s ease-in-out)
+			background-color: transparent
+			color: #7b96c4
+			display: inline-block
+			font-family: $default-font
+			font-size: 12px
+			font-weight: bold
+			line-height: 1
+			padding-left: 10px
+			text-decoration: none
+			text-transform: uppercase
+			vertical-align: baseline
+		.icon-feed a,
+		.icon-teams a
+			padding-left: 12px
+		.icon-statistics a
+			padding-left: 7px
+		.icon-dashboard a
+			padding-left: 4px
+	.stats-sign-out
+		display: block
+		text-decoration: none
+		color: #7b96c4
+		font-size: 23px
+		position: absolute
+		top: calc(100% - 50px)
+		left: 90px
+		&:before
+			@include transition(color .5s ease-in-out)
+		&:hover:before
+			color: #55e4d4
+			@include transition(color .5s ease-in-out)
+
+.notes-block
+	background: linear-gradient(to right, #ecf0f8, #f4f8ff)
+	color: $notes-main
+	padding: 0 0 0 20px
+	width: 250px
+	border-top: 1px solid #e4eaf4
+	.recent-activity,
+	.team
+		h3
+			text-transform: uppercase
+		.recent-avatars,
+		.team-avatars
+			list-style: none
+			padding: 0
+			margin: 0
+			li
+				margin-bottom: 20px
+			a
+				background: url(#{$main-path}sprite-1.png) no-repeat
+				display: inline-block
+				width: 50px
+				height: 48px
+			.details
+				display: inline-block
+			p
+				margin: 0
+				color: $base
+				font-weight: bold
+				line-height: 18px
+			span
+				font-size: 12px
+				color: #a9bde0
+				vertical-align: 8px
+			.avatar-bradley a
+				background-position: 0 0
+			.avatar-bradley a
+				background-position: -50px 1px
+			.avatar-jenifer a
+				background-position: 0 -44px
+			.avatar-hugh a
+				background-position: -50px -44px
+		button
+			@include bbb-flat-style(#fff, $notes-main)
+			border-radius: 25px
+			font-weight: bold
+			display: block
+			text-transform: uppercase
+			padding: 7px 40px
+			text-align: center
+			margin: 0 auto 30px
+
+.main-block
+	color: $main
+	padding: 0
+	width: calc(100% - 500px)
+	background: #fff
+	.dropdowns
+		height: 160px
+		display: flex
+		flex-direction: row
+		justify-content: space-around
+		align-items: center
+		position: relative
+		h1
+			color: $dropdown
+			margin: 0
+			line-height: 40px
+		.offset
+			margin-left: -110px
+		.dropdwn
+			@include bbb-flat-style(transparent, $dropdown)
+			border-radius: 25px
+			border: 1px solid #e6ebf2
+			font-size: 14px
+			font-weight: bold
+			margin-right: 20px
+			padding: 7px 15px 7px 20px
+			text-align: left
+			width: 200px
+			position: relative
+			span
+				color: $base
+		.icon-ctrl::before
+			@include rotate(180deg)
+			height: 10px
+			font-size: 20px
+			position: absolute
+			top: 15px
+			left: 165px
+		.active::before
+			@include rotate(0deg)
+
+	.diagram
+		@include fluid-ratio(1170px 467px, 300px 150px)
+		background-image: url(#{$main-path}diagram.jpg)
+
+	.statistics
+		margin-bottom: 30px
+		.rows-block
+			.card-row
+				div
+					border: 1px solid red//#edf4ff
+					border-radius: 20px
+			[class^="stats-"], [class*=" stats-"]
+				font-size: 24px
+				text-align: center
+				display: block
+				margin-top: 15px
+			.stats-text,
+			.stats-number
+				font-family: $default-font !important
+				color: $main
+				margin: 20px 0
+			.stats-circle-up,
+			.stats-number
+				font-size: 36px
+				color: #4ad8b6
+			.stats-circle-up:before
+				display: block
+				height: 16px
+			.block-notifications
+				.stats-circle-up,
+				.stats-number
+					color: #ff5d87
+				.stats-circle-up:before
+					transform: rotate(-180deg)
+			.block-comments
+				.stats-circle-up,
+				.stats-number
+					color: $main
+				.stats-circle-up:before
+					transform: rotate(90deg)
+
+
+@import "media"
+
+@media only screen and (max-width: 1669px)
+	.dashboard-header,
+	.dashboard-statistics
+		width: 100%
+		.header-container
+			.main-bar button
+				margin-left: calc(100% - 600px)
+
+
+@media only screen and (max-width: 1430px)
+	.main-block
+		.diagram
+			margin-bottom: 70px
+		.statistics
+			.rows-block
+				[class^="stats-"], [class*=" stats-"]
+					font-size: 21px
+				.stats-circle-up,
+				.stats-number
+					font-size: 28px
+
+
+/* Large Devices, Wide Screens */
+@media (max-width: 1200px)
+	.dashboard-header
+		.left-bar,
+		.right-bar
+			width: 150px
+		.header-container
+			width: calc(100% - 300px)
+	.dashboard-statistics
+		.main-block
+			width: calc(100% - 170px)
+			.dropdowns
+				height: 120px
+			.wrapper h1
+				font-size: 25px
+				line-height: 30px
+			.dropdwn
+				width: 170px
+				i:before
+					left: 135px
+			.diagram
+				margin-bottom: 0
+		.left-menu
+			width: 85px
+			z-index: 9
+			.stats-sign-out
+				left: 35px
+				font-size: 25px
+
+		.header-container button
+			margin: 0
+
+		.right-bar
+			.nickname
+				display: none
+
+		.dashboard-menu
+			width: 85px
+			opacity: .5
+			z-index: 999
+			&:hover
+				opacity: 1
+				@include transition(opacity .3s ease-in-out)
+			li
+				width: 85px
+				height: 40px
+				overflow: hidden
+				background: #293b5a
+				padding: 0
+				position: relative
+				@include transition(width .5s ease-in-out)
+			li a
+				display: none
+				width: 170px
+				height: 40px
+				font-size: 15px
+				letter-spacing: 1px
+				line-height: 40px
+				text-indent: 58px
+				padding-left: 10px !important
+			li:hover
+				width: 170px
+				height: 40px
+				@include transition(width .5s ease-in-out)
+			li:hover a
+				display: block
+				@include transition(all .5s ease-in-out)
+			li:before,
+			li span:before
+				font-size: 25px
+				position: absolute
+				top: 7px
+				left: 28px
+			li .path7, .path8
+				position: absolute
+				left: 24px
+			.icon-statistics
+				&:before
+					font-size: 33px
+					top: 3px
+					left: 27px
+
+		.notes-block
+			width: 85px
+			h3,
+			.recent-avatars .details,
+			.team-avatars .details,
+			.team .viev-more
+				display: none
+
+			.recent-avatars li,
+			.team-avatars li
+				margin: 20px 0
+
+/* Medium Devices, Desktops */
+@media (max-width: 992px)
+	.dashboard-header
+		.left-bar,
+		.header-container,
+		.right-bar
+			height: 90px
+		.left-bar .main-logo img
+			margin: 36px auto
+	.main-block
+		.diagram
+			margin-bottom: 30px
+		.statistics
+			.rows-block
+				.card-row
+					margin-bottom: 20px
+					height: 170px
